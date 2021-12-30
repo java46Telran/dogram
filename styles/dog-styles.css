@@ -154,15 +154,8 @@ body, html {
     }
 }
 @media (min-width: 900px){
-    :root {
-        --thumbnails-image-width: 12vw;
-        --thumbnails-image-height: 10vw;
-        --thumbnails-title-height: calc(var(--thumbnails-image-height) * 0.25);
-        --thumbnails-list-max-height: 85vh;
-        --thumbnails-title-font-size: 1.5rem;
-        --details-image-width: 50vw;
-        --details-image-height: 38vw;
-    }
+
+
     .thumbnails-list {
         
         max-height: 85vh;
