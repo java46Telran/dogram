@@ -153,3 +153,35 @@ body, html {
         
     }
 }
+@media (min-width: 900px){
+    
+    .thumbnails-list {
+        
+        max-height: 85vh;
+       
+       padding-right: 2vw
+    }
+    .thumbnails-title {
+        
+        font-size: 1.5rem;
+        
+    }
+    
+    
+    .details-image {
+        width: 50vw;
+        height: 38vw;
+    }
+    .details-title {
+        left: 1vw;
+        bottom: 3vw;
+        font-size: 2rem;
+        
+    }
+   
+    .logo-title {
+        margin: 0;
+        font-size: 2rem;
+        
+    }
+}
