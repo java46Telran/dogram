@@ -37,6 +37,15 @@ body {
     flex-direction: column;
     max-height: 80vh;
     flex-wrap:nowrap;
+    justify-content: flex-start;
+}
+.hidden.main-content {
+    display: flex;
+    justify-content: center;
+}
+.hidden .thumbnails-image {
+    width: calc(var(--thumbnails-image-width) * 3);
+    height: calc(var(--thumbnails-image-height) * 3);
 }
 .thumbnails-image {
     width: var(--thumbnails-image-width);
@@ -61,6 +70,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: 3s cubic-bezier(0.1, 2, 0.9, 1) ;
 }
 .hide-button {
     position:absolute;
@@ -79,6 +89,12 @@ body {
     width: var(--thumbnails-image-width);
     height: var(--thumbnails-title-height);
 }
+.hidden .thumbnails-title {
+    
+    width: calc(var(--thumbnails-image-width) * 3);
+    height: calc(var(--thumbnails-title-height) * 2);
+    font-size: 2rem;
+}
 .thumbnails-item {
     margin-top: 2vh;
     margin-left: 2vw;
@@ -88,9 +104,16 @@ body {
     border-radius: 25%;
     overflow: hidden
 }
+
+.hidden .thumbnails-item {
+   
+    max-width: calc(var(--thumbnails-image-width) * 3);
+    min-height: calc(var(--thumbnails-image-height) * 3 + var(--thumbnails-title-height) * 2);
+   
+}
 .selected.thumbnails-item {
     border-radius: 0;
-    border: 3px solid green
+    border: 1px solid green
 }
 .thumbnails-anchor {
     text-decoration: none;
@@ -106,6 +129,14 @@ body {
 }
 body, html {
     height: 100%
+}
+.thumbnails-item:hover {
+    transform: scale(1.1);
+    transition: 50ms;
+}
+.is-tiny {
+    transform: scale(0.001);
+    transition: 0s;
 }
 @media (min-width: 568px){
     :root {
@@ -123,6 +154,13 @@ body, html {
         margin: 0;
        
     }
+    .hidden .thumbnails-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    
     .thumbnails-title {
         
         font-size: 1rem;
@@ -138,6 +176,10 @@ body, html {
     }
     .thumbnails-item+.thumbnails-item {
         margin-top: 2vh;
+    }
+    
+    .hidden .thumbnails-item{
+        margin-top: 2vh
     }
     
     .details-image {
