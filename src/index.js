@@ -2,12 +2,12 @@ console.log("script launched");
 let detailsImage = document.querySelector(".details-image");
 let detailsTitle = document.querySelector(".details-title");
 let mainContentEl = document.querySelector(".main-content");
-
+let audio = document.getElementById('audio');
 let selectedItem;
-let anchors = 
-document.querySelectorAll(".thumbnails-anchor");//all HTML elements belonging to the clas thumbnails-anchor
-for(let i = 0; i < anchors.length; i++) {
-    anchors[i].addEventListener("click", function(event) {
+let anchors =
+    document.querySelectorAll(".thumbnails-anchor");//all HTML elements belonging to the clas thumbnails-anchor
+for (let i = 0; i < anchors.length; i++) {
+    anchors[i].addEventListener("click", function (event) {
         event.preventDefault(); //canceling default behavior of anchor element hitting
         showDetails();
         setDetails(anchors[i]); //setDetails function call with passing reference to appropriate anchor
@@ -16,7 +16,12 @@ for(let i = 0; i < anchors.length; i++) {
 function setDetails(anchor) {
     console.log("anchor element  was pressed", anchor);
     let hrefValue = anchor.getAttribute("href");
-    detailsImage.setAttribute("src", hrefValue );
+    detailsImage.setAttribute("src", hrefValue);
+    audio.setAttribute("src", anchor.getAttribute('data-details-bark'))
+    audio.play();
+    setTimeout(function () {
+        audio.pause();
+    }, 3000)
     anchor.parentElement.classList.add("selected");
     if (selectedItem) {
         selectedItem.classList.remove("selected")
@@ -26,14 +31,16 @@ function setDetails(anchor) {
     let thumbnailsTitleSelector = `[href="${hrefValue}"] .thumbnails-title`;
     let thumbnailsTitleEl = document.querySelector(thumbnailsTitleSelector);
     //dog name exists inside thumbnailsTitleEl.textContent
-    detailsTitle.textContent = `${thumbnailsTitleEl.textContent}: ${anchor.getAttribute('data-details-title')}` ;
-   
+    detailsTitle.textContent = `${thumbnailsTitleEl.textContent}: ${anchor.getAttribute('data-details-title')}`;
+
 }
 function showDetails() {
+
     mainContentEl.classList.remove('hidden');
     detailsImage.parentElement.classList.add('is-tiny');
     setTimeout(removeIsTiny);
-    
+
+
 
 
 }
@@ -42,8 +49,9 @@ function removeIsTiny() {
 }
 
 function hideDetails() {
-    mainContentEl.classList.add('hidden') ;
+    mainContentEl.classList.add('hidden');
     if (selectedItem) {
         selectedItem.classList.remove('selected')
     }
 }
+
